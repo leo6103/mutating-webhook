@@ -1,0 +1,14 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "mkdir -p tmp && go build -o tmp/webhook ./cmd"
+bin = "tmp/webhook"
+include_ext = ["go"]
+exclude_dir = ["tmp", ".git", "vendor"]
+exclude_file = ["webhook.log"]
+delay = 1000
+stop_on_error = true
+
+[misc]
+clean_on_exit = true
