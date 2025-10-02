@@ -13,7 +13,7 @@ const (
 	targetLabelValue    = "coder-workspace"
 	initContainerName   = "clone-repo"
 	initContainerImage  = "alpine/git:2.45.2"
-	initContainerScript = "git clone --depth=1 https://github.com/leo6103/test-fast-api /home/coder/test-fast-api"
+	initContainerScript = "git clone --depth=1 https://github.com/leo6103/ray-example /home/coder/ray-example"
 	sharedVolumeName    = "home"
 	sharedMountPath     = "/home/coder"
 )
