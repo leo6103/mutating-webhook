@@ -13,7 +13,15 @@ const (
 	targetLabelValue    = "coder-workspace"
 	initContainerName   = "clone-repo"
 	initContainerImage  = "alpine/git:2.45.2"
-	initContainerScript = "git clone --depth=1 https://github.com/leo6103/ray-example /home/coder/ray-example"
+	initContainerScript = `set -eux
+cd /home/coder
+rm -rf ray-example
+git clone --depth=1 https://github.com/leo6103/ray-example ray-example
+wget -O /home/coder/kubox-ray-sync https://github.com/leo6103/kubox-ray-sync/releases/download/v0.0.1/kubox-ray-sync
+chmod +x /home/coder/kubox-ray-sync
+chown -R 1000:1000 /home/coder/ray-example || true
+chown 1000:1000 /home/coder/kubox-ray-sync || true
+`
 	sharedVolumeName    = "home"
 	sharedMountPath     = "/home/coder"
 )
